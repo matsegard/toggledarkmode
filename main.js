@@ -5,8 +5,22 @@ let isDarkMode = false;
 
 
 function main() {
-    // Set theme 
+    // Set theme from local storage 
     addEventListeners();
+    loadThemeFromLocalStorage();
+    renderTheme();
+}
+
+function loadThemeFromLocalStorage() {
+    isDarkMode = JSON.parse(localStorage.isDarkMode);
+}
+
+function renderTheme() {
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
 }
 
 function addEventListeners() {
@@ -16,7 +30,7 @@ function addEventListeners() {
 
 function toggleTheme() {
     isDarkMode = !isDarkMode;
-    document.body.classList.toggle('dark-mode'); 
-
+    document.body.classList.toggle('dark-mode');
     localStorage.isDarkMode = isDarkMode;
-} 
+    renderTheme();
+}
