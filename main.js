@@ -13,7 +13,7 @@ function main() {
 
 /** Loads isdarkmode from local storage and saves it to a global variable */
 function loadThemeFromLocalStorage() {
-    isDarkMode = JSON.parse(localStorage.isDarkMode);
+    isDarkMode = JSON.parse(localStorage.isDarkMode || null);
 }
 
 /** Toggles class on body element based on isDarkMode state */
